@@ -50,6 +50,8 @@ exclude_patterns = [
     'conf.py',
     'conf.rst',
     'modules.rst',
+    'roboscript.rst',
+    'usbdevs.rst',
     'README.md']
 
 

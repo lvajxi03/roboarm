@@ -81,7 +81,18 @@ class RoboArm():
             3)
         time.sleep(duration)
         # Stop motor:
-        Command=[0,0,0]
+        command=[0,0,0]
+        self.arm.ctrl_transfer(
+            0x40,
+            6,
+            0x100,
+            0,
+            command,
+            3)
+
+    def stop(self):
+        """Stop motor immediately"""
+        command=[0, 0, 0]
         self.arm.ctrl_transfer(
             0x40,
             6,
@@ -91,18 +102,19 @@ class RoboArm():
             3)
 
     def light_on(self, duration=DefaultDuration):
-        """Turn the light on and sleep for ``duration`` seconds
+        """Turn the LED on"""
+        command = [0, 0, 1]
+        self.arm.ctrl_transfer(
+            0x40,
+            6,
+            0x100,
+            0,
+            command,
+            3)
 
-        :param float duration: Sleep delay after switching LED on
-        """
-        self.__move_arm__([0,0,1], duration)
-
-    def light_off(self, duration=DefaultDuration):
-        """Turn the light off and sleep for ``duration`` seconds
-
-        :param float duration: Sleep delay after switching LED off
-        """
-        self.__move_arm__([0,0,0], duration)
+    def light_off(self):
+        """Turn the LED off"""
+        self.stop()
 
     def base_counterclockwise(self, duration=DefaultDuration):
         """
@@ -135,7 +147,7 @@ class RoboArm():
         .. warning::
            Elbow motor does not detect if end reached
         """
-        self.__move_arm__([16,0,0], duration)
+        self.__move_arm__([32,0,0], duration)
 
     def elbow_down(self, duration=DefaultDuration):
         """
@@ -146,7 +158,7 @@ class RoboArm():
         .. warning::
            Elbow motor does not detect if end reached
         """
-        self.__move_arm__([32,0,0], duration)
+        self.__move_arm__([16,0,0], duration)
 
     def wrist_up(self, duration=DefaultDuration):
         """
@@ -157,7 +169,8 @@ class RoboArm():
         .. warning::
            Wrist motor does not detect if end reached
         """
-        self.__move_arm__([4,0,0], duration)
+
+        self.__move_arm__([8,0,0], duration)
 
     def wrist_down(self, duration=DefaultDuration):
         """
@@ -168,7 +181,8 @@ class RoboArm():
         .. warning::
            Wrist motor does not detect if end reached
         """
-        self.__move_arm__([8,0,0], duration)
+        self.__move_arm__([4,0,0], duration)
+
 
     def shoulder_up(self, duration=DefaultDuration):
         """

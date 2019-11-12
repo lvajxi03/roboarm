@@ -5,3 +5,4 @@ roboarm
    :maxdepth: 4
 
    roboarm.rst
+   roboui.rst

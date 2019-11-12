@@ -10,7 +10,8 @@ Welcome to RoboArm's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   roboarm
+   roboui
 
 Indices and tables
 ==================

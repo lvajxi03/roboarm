@@ -46,6 +46,14 @@ your *Velleman KSR10*/*OWI-535* roboarm
     You may experience ``permission denied`` errors when controlling your
     roboarm -- need to check your permissions or run application as
     *superuser*/*root*.
+
+    **Linux users**
+
+    You may put ``logic3-spectravideo.rules`` included here into
+    ``/etc/udev/rules.d/`` and then restart ``udev`` (or your operating system)
+    to have appropriate device in ``/dev/bus/usb/`` with correct permissions
+    (``a=rw``)
+
 """
 
 import sys
